@@ -1,0 +1,16 @@
+S = TITLES RECORD*
+<TITLES> = 'BSB Number,Account Number,Transaction Date,Narration,Cheque,Debit,Credit,Balance,Transaction Type' newline
+RECORD = 'record'
+RECORD = BSBNUMBER del ACCOUNTNUMBER del TRANSACTIONDATE del NARRATION del CHEQUE del DEBIT del CREDIT del BALANCE del TRANSACTIONTYPE newline
+BSBNUMBER = #'\d{3}-\d{3}'
+ACCOUNTNUMBER = #'\d+'
+TRANSACTIONDATE = #'\d\d/\d\d/\d{4}'
+NARRATION = quote #'[^"]*' quote
+CHEQUE = quote #'[^"]*' quote
+DEBIT = #'\d+\.\d\d' | Epsilon
+CREDIT = #'\d+\.\d\d' | Epsilon
+BALANCE = #'-?\d+\.\d\d'
+TRANSACTIONTYPE = ('NAR'|'TFD'|'DEP'|'WDL'|'TFC'|'PAY'|'DID'|'CHQ')
+<del> = <','>
+<newline> = <'\r\n'>
+<quote> = <'"'>

@@ -1,0 +1,7 @@
+STATEMENT = HEADER TITLES (TXN_LINE_1 TXN_LINE_2 PAGE_BREAK)* TXN_ENDING FOOTER
+HEADER = #'.*'
+FOOTER = #'.*'
+TITLES = < 'Date Particulars Debit Credit Balance' newline >
+TXN_LINE_1 = DAY del MONTH del YEAR del PARTICULARS del 
+<del> = < ' ' >
+<newline> = < '\r\n' | '\n' >
